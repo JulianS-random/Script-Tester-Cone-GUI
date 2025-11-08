@@ -1,30 +1,26 @@
--- Script to detect the start of a round in Forsaken (Krnl Executor)
+-- Round Start Detector Script
 
 local function detectRoundStart()  
-    -- UI Element Monitoring (Example)  
-    local loadingScreen = game.Workspace:FindFirstChild("LoadingScreen") -- Replace "LoadingScreen" with the actual name  
-    if loadingScreen then  
-        print("Round start detected (Loading Screen)!")  
-        return true  
-    end
+  -- Replace this with your actual round start detection logic.  
+  -- This is a placeholder - you'll need to observe the game  
+  -- and determine how to detect the start of a round.  
+  -- Example: Check for a UI element appearing, an event firing, etc.
 
-    -- Memory Monitoring (Using Krnl)  
-    local roundStateAddress = 0xYourRoundStateAddressHere -- Replace with the actual memory address  
-    local roundState = krnl.readMemory(roundStateAddress, "int") -- Read as integer (adjust type if necessary)
+  -- Placeholder: Checks for a loading screen named "LoadingScreen"  
+  local loadingScreen = game.Workspace:FindFirstChild("LoadingScreen")  
+  if loadingScreen then  
+    print("Round start detected!")  
+    return true  -- Round started  
+  end
 
-    if roundState == 1 then -- Replace 1 with the actual value indicating a round start  
-        print("Round start detected (Memory)!")  
-        return true  
-    end
-
-    return false  
+  return false -- Round hasn't started  
 end
 
 while true do  
-    if detectRoundStart() then  
-        print("New round started!")  
-        -- Call your main auto-farm function here  
-        break -- Break out of the loop after detecting one round start  
-    end  
-    wait(1) -- Check every 1 second  
+  if detectRoundStart() then  
+    print("New round started!")  
+    -- Add your auto-farm logic here (later)  
+    break -- Exit loop once round start is detected, you can remove this if you want the script to continually detect  
+  end  
+  wait(1) -- Check every 1 second  
 end  
